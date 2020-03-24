@@ -1,0 +1,11 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Node Api",
+  "main": "index.js",
+  "author": "Railson Rames",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
