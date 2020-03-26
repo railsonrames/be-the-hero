@@ -1,5 +1,8 @@
 const express = require('express');
 
+const OngController = require('../controllers/OngController');
+const IncidentController = require('../controllers/IncidentController');
+
 const routes = express.Router();
 
 routes.get('/user', (request, response) => {
@@ -21,5 +24,12 @@ routes.post('/user', (request, response) => {
   console.log(param);
   return response.send('User added successfully.');
 });
+
+routes.get('/ong', OngController.index);
+routes.post('/ong', OngController.create);
+
+routes.get('/incident', IncidentController.index);
+routes.post('/incident', IncidentController.create);
+routes.delete('/incident/:id', IncidentController.delete);
 
 module.exports = routes;
