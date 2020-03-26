@@ -1,12 +1,12 @@
-const express = require("express");
+const express = require('express');
 const app = express();
 
+app.use(express.json());
 app.listen(3333);
 
-app.get("/", (request, response) => {
-  return response.json({
-    message: "Hello, world!",
-    event: "Omnistack Week 11",
-    aluno: "Railson Rames"
-  });
+app.post('/user', (request, response) => {
+  const param = request.body;
+  console.log(param);
+
+  return response.send('Usuário criado com sucesso!');
 });
