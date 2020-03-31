@@ -2,28 +2,9 @@ const express = require('express');
 
 const OngController = require('../controllers/OngController');
 const IncidentController = require('../controllers/IncidentController');
+const SessionController = require('../controllers/SessionController');
 
 const routes = express.Router();
-
-routes.get('/user', (request, response) => {
-  return response.send('Hello, world!');
-});
-
-routes.get('/user/:id', (request, response) => {
-  const param = request.params;
-  console.log(param);
-  return response.json({
-    texto: 'Hello, world!',
-    event: 'Omnistack Week #11',
-    student: 'Railson Rames'
-  });
-});
-
-routes.post('/user', (request, response) => {
-  const param = request.body;
-  console.log(param);
-  return response.send('User added successfully.');
-});
 
 routes.get('/ong', OngController.index);
 routes.post('/ong', OngController.create);
@@ -32,5 +13,7 @@ routes.get('/incident', IncidentController.index);
 routes.get('/incident/ong', IncidentController.byOng);
 routes.post('/incident', IncidentController.create);
 routes.delete('/incident/:id', IncidentController.delete);
+
+routes.post('/session', SessionController.create);
 
 module.exports = routes;
