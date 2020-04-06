@@ -3,30 +3,35 @@ import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 
-import api from '../../../services/api';
-
 import './styles.css';
+
 import logoImg from '../../../assets/logo.svg';
+import api from '../../../services/api';
 
 export default function NewIncident() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
 
+  const ong_id = localStorage.getItem('ongId');
+
   const history = useHistory();
 
-  const ongId = localStorage.getItem('ongId');
+  async function newIncidentHandler(e) {
+    e.preventDefault();
 
-  async function newIncidentHandler(event) {
-    event.prevetDefault();
-
-    const data = { title, description, value };
+    const data = {
+      title,
+      description,
+      value,
+    };
 
     try {
       const result = await api.post('incident', data, {
-        headers: { Authorization: ongId },
+        headers: {
+          Authorization: ong_id,
+        },
       });
-
       toast.success(`Incidente criado com sucesso, ID: ${result.data.id}.`);
       history.push('/ong/incidents');
     } catch (error) {
@@ -43,12 +48,12 @@ export default function NewIncident() {
           <img src={logoImg} alt="Be The Hero" />
           <h1>Cadastrar novo caso</h1>
           <p>
-            Descreva o caso detalhadamente para encontrar um herói para resolver
-            isso.
+            Descreva seu caso detalhadamente para encontrar um herói para
+            resolver isso.
           </p>
-          <Link className="arrow-link" to="/ong/incidents">
+          <Link to="/profile" className="arrow-link">
             <FiArrowLeft size={16} color="#E02041" />
-            Voltar para a home
+            Voltar para home
           </Link>
         </section>
 
@@ -59,7 +64,7 @@ export default function NewIncident() {
             onChange={(e) => setTitle(e.target.value)}
           />
           <textarea
-            placeholder="Descrição"
+            placeholder="Descrição do caso"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -68,9 +73,8 @@ export default function NewIncident() {
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />
-
           <button className="button" type="submit">
-            Cadastar
+            Cadastrar
           </button>
         </form>
       </div>
