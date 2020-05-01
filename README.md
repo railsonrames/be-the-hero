@@ -59,6 +59,10 @@ Este maravilindo projeto foi desenvolvido com as seguintes tecnologias:
   
 </table>
 
+### :checkered_flag: Preview
+
+<img src="./Be The Hero.png" /> <br />
+
 ### :muscle: Projeto
 
 <b>Be the Hero</b> é um projeto que visa ajudar, de maneira <b>financeira</b> uma instituição de caridade, ajudando a mesma se manter. 
