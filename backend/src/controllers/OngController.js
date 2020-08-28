@@ -18,9 +18,11 @@ module.exports = {
       email,
       whatsapp,
       city,
-      uf
+      uf,
     });
 
     return response.json({ id });
-  }
+  },
+
+  // alteração master blaster extreme supreme victory
 };

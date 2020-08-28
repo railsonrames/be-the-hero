@@ -17,8 +17,8 @@ export default function NewIncident() {
 
   const history = useHistory();
 
-  async function newIncidentHandler(e) {
-    e.preventDefault();
+  async function newIncidentHandler(event) {
+    event.preventDefault();
 
     const data = {
       title,
